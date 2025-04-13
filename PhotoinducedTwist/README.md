@@ -29,7 +29,7 @@ research, please cite the following paper:
 BibTeX:
 ```bibtex
 @article{Duncanphotoinduced2025,
-      title={Photoinduced twist and untwist of moir\'{e} superlattices in TMDC heterobilayers}, 
+      title={Photoinduced twist and untwist of moiré superlattices in TMDC heterobilayers}, 
       author={C. J. R. Duncan and A. C. Johnson and I. Maity and A. Rubio and M. Gordon and A. C. Bartnik and M. Kaemingk and W. H. Li and M. B. Andorf and C. A. Pennington and I. V. Bazarov and M. W. Tate and D. A. Muller and J. Thom-Levy and S. M. Gruner and A . M. Lindenberg and F. Liu and J. M. Maxson},
       year={2025},
       eprint={2502.11452},
