@@ -1,0 +1,138 @@
+LAMMPS (7 Jan 2022)
+#General settings
+units           metal
+dimension       3
+box tilt        large
+atom_style      atomic
+
+# structure
+boundary        p p p
+read_data       lammps.dat
+Reading data file ...
+  triclinic box = (0 0 0) to (60.402103 52.309756 100) with tilt (30.201051 0 0)
+WARNING: Triclinic box skew is large (../domain.cpp:219)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  1986 atoms
+  read_data CPU = 0.030 seconds
+
+# potentials
+pair_style hybrid/overlay sw/mod sw/mod kolmogorov/crespi/z 14.0 kolmogorov/crespi/z 14.0 kolmogorov/crespi/z 14.0 kolmogorov/crespi/z 14.0 lj/cut 10.0
+
+# Intralayer Interaction
+pair_coeff * * sw/mod 1 tmd.sw Mo Se Se NULL NULL NULL
+pair_coeff * * sw/mod 2 tmd.sw NULL NULL NULL W Se Se
+
+# Interlayer Interaction
+pair_coeff 1 5 kolmogorov/crespi/z 1 MoWSe.KC Mo NULL NULL  NULL Se NULL
+pair_coeff 3 4 kolmogorov/crespi/z 2 MoWSe.KC NULL NULL Se  W NULL NULL
+pair_coeff 3 5 kolmogorov/crespi/z 3 MoWSe.KC NULL NULL Se  NULL Se NULL
+pair_coeff 1 4 kolmogorov/crespi/z 4 MoWSe.KC Mo NULL NULL  W NULL NULL
+pair_coeff * * lj/cut 0.0 3.0
+neighbor        2.0 bin
+neigh_modify every 1 delay 0 check yes
+
+#optimize at 0 K
+dump            1 all custom 100 dump.initial id type x y z
+thermo          100
+thermo_style    custom step pe press
+
+min_style       fire
+minimize        0.0 1.0e-6 1000000 1000000
+Neighbor list info ...
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 16
+  ghost atom cutoff = 16
+  binsize = 8, bins = 12 7 13
+  8 neighbor lists, perpetual/occasional/extra = 8 0 0
+  (1) pair sw/mod, perpetual, skip from (8)
+      attributes: full, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (2) pair sw/mod, perpetual, skip from (8)
+      attributes: full, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (3) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (4) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (5) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (6) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (7) pair lj/cut, perpetual, half/full from (8)
+      attributes: half, newton on
+      pair build: halffull/newton
+      stencil: none
+      bin: none
+  (8) neighbor class addition, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+  Parameters for fire: 
+    dmax delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin    integrator halfstepback 
+     0.1        20    1.1      0.5   0.25        0.99   10 0.02 eulerimplicit          yes 
+Per MPI rank memory allocation (min/avg/max) = 13.8 | 13.8 | 13.8 Mbytes
+Step PotEng Press 
+       0   -4491.6594    10504.465 
+     100   -4744.3961   -1381.2178 
+     200   -4744.4386   -1390.8866 
+     300   -4744.4396   -1391.0074 
+     400   -4744.4396   -1391.0778 
+     500   -4744.4396   -1391.0782 
+     593   -4744.4396   -1391.0783 
+Loop time of 6.57809 on 1 procs for 593 steps with 1986 atoms
+
+100.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+Minimization stats:
+  Stopping criterion = force tolerance
+  Energy initial, next-to-last, final = 
+     -4491.65937732674  -4744.43962371175  -4744.43962371174
+  Force two-norm initial, final = 93.335438 8.6694413e-07
+  Force max component initial, final = 2.8906592 5.1820828e-08
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 593 597
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 6.528      | 6.528      | 6.528      |   0.0 | 99.24
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.016455   | 0.016455   | 0.016455   |   0.0 |  0.25
+Output  | 0.012594   | 0.012594   | 0.012594   |   0.0 |  0.19
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.02103    |            |       |  0.32
+
+Nlocal:           1986 ave        1986 max        1986 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           8310 ave        8310 max        8310 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         298363 ave      298363 max      298363 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 298363
+Ave neighs/atom = 150.23313
+Neighbor list builds = 0
+Dangerous builds = 0
+write_data      lammps.dat_min
+System init for write_data ...
+undump          1
+Total wall time: 0:00:06

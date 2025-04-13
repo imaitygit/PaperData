@@ -1,0 +1,107 @@
+LAMMPS (7 Jan 2022)
+Reading data file ...
+  triclinic box = (0 0 0) to (89.146787 77.203382 100) with tilt (44.573393 0 0)
+WARNING: Triclinic box skew is large (../domain.cpp:219)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  4326 atoms
+  read_data CPU = 0.038 seconds
+Neighbor list info ...
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 16
+  ghost atom cutoff = 16
+  binsize = 8, bins = 17 10 13
+  8 neighbor lists, perpetual/occasional/extra = 8 0 0
+  (1) pair sw/mod, perpetual, skip from (8)
+      attributes: full, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (2) pair sw/mod, perpetual, skip from (8)
+      attributes: full, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (3) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (4) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (5) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (6) pair kolmogorov/crespi/z, perpetual, skip from (7)
+      attributes: half, newton on
+      pair build: skip
+      stencil: none
+      bin: none
+  (7) pair lj/cut, perpetual, half/full from (8)
+      attributes: half, newton on
+      pair build: halffull/newton
+      stencil: none
+      bin: none
+  (8) neighbor class addition, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Setting up fire style minimization ...
+  Unit style    : metal
+  Current step  : 0
+Per MPI rank memory allocation (min/avg/max) = 20.64 | 20.64 | 20.64 Mbytes
+Step PotEng Press 
+       0   -9783.9478    10504.499 
+     100   -10342.564   -1382.3627 
+     200    -10342.71   -1369.0543 
+     300   -10342.711   -1369.1038 
+     400   -10342.712   -1369.1922 
+     500   -10342.713   -1369.2917 
+     600   -10342.713   -1369.2843 
+     700   -10342.713   -1369.2806 
+     800   -10342.713   -1369.2764 
+     900   -10342.713   -1369.2761 
+     973   -10342.713    -1369.276 
+Loop time of 32.9469 on 1 procs for 973 steps with 4326 atoms
+
+99.9% CPU use with 1 MPI tasks x no OpenMP threads
+
+Minimization stats:
+  Stopping criterion = force tolerance
+  Energy initial, next-to-last, final = 
+     -9783.94776982538   -10342.712761436  -10342.7127614361
+  Force two-norm initial, final = 137.75272 9.9985114e-06
+  Force max component initial, final = 2.8906626 4.2415337e-07
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 973 977
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 32.766     | 32.766     | 32.766     |   0.0 | 99.45
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.071261   | 0.071261   | 0.071261   |   0.0 |  0.22
+Output  | 0.00044322 | 0.00044322 | 0.00044322 |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.109      |            |       |  0.33
+
+Nlocal:           4326 ave        4326 max        4326 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          12946 ave       12946 max       12946 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         649938 ave      649938 max      649938 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 649938
+Ave neighs/atom = 150.23994
+Neighbor list builds = 0
+Dangerous builds = 0
+System init for write_data ...
+Total wall time: 0:00:33
