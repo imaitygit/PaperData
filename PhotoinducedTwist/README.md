@@ -16,6 +16,19 @@ the interlayer interaction between MoSe2 and WSe2 is
 described by the Kolmogorov–Crespi potential. For more
 details, please see [Relaxation](./Relaxation/).
 
+## Phonon
+We perform phonon calculations with classical interatomic
+potentials. Example input scripts along with data provied in
+[Phonon](./Phonon). We combine
+[PHONOPY](https://phonopy.github.io/phonopy/),
+[LAMMPS](https://www.lammps.org), and
+[PhonoLAMMPS](https://github.com/abelcarreras/phonolammps) to
+compute phonons of moiré system.  
+
+## Electronic structure
+
+
+## Deformation potential
 
 
 ## Acknowledgment
